@@ -1,5 +1,7 @@
 package com.qa.shopingsitetest;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,9 +34,13 @@ public class ShoppingSiteTest {
 		driver.get("http://automationpractice.com/index.php");
 		target = driver.findElement(By.id("search_query_top"));
 		
-		target.sendKeys("dress");
+		target.sendKeys("printed dress");
 		target = driver.findElement(By.name("submit_search"));
 		target.click();
+		
+		target = driver.findElement(By.className("/html/body/div[1]/div[2]/div/div[3]/div[2]/ul/li[5]/div/div[2]/div[2]/a[2]/span"));
+		
+		assertTrue(driver.getPageSource().contains("model demo_3"));
 		
 		Thread.sleep(10000);
 	}
